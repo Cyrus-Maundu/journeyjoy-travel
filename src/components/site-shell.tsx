@@ -8,7 +8,15 @@ const menuGroups = [
   { label: "Inspire", items: [{ label: "Photo gallery", to: "/gallery" }, { label: "Guest reviews", to: "/reviews" }] },
 ] as const;
 const directLinks = [{ label: "About", to: "/about" }, { label: "Contact", to: "/contact" }] as const;
-const footerLinks = [{ label: "Home", to: "/" }, ...menuGroups.flatMap((group) => group.items), ...directLinks] as const;
+const footerLinks = [
+  { label: "Home", to: "/" },
+  { label: "Destinations", to: "/destinations" },
+  { label: "Safari styles", to: "/safari-styles" },
+  { label: "All tours", to: "/tours" },
+  { label: "Photo gallery", to: "/gallery" },
+  { label: "Guest reviews", to: "/reviews" },
+  ...directLinks,
+] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
