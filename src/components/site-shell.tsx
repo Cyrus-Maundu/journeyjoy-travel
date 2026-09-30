@@ -1,0 +1,19 @@
+import { Link } from "@tanstack/react-router";
+import { Mail, Menu, Phone, X } from "lucide-react";
+import { useState } from "react";
+import { Button, buttonVariants } from "@/components/ui/button";
+
+const links = [{ label: "Home", to: "/" }, { label: "Tours", to: "/tours" }, { label: "About", to: "/about" }, { label: "Contact", to: "/contact" }] as const;
+
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  return <>
+    <div className="absolute inset-x-0 top-0 z-40 hidden border-b border-primary-foreground/20 text-primary-foreground lg:block"><div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-8 text-[10px] font-medium uppercase tracking-[0.14em]"><span>Private journeys across East Africa</span><div className="flex gap-6"><span className="inline-flex items-center gap-2"><Phone className="h-3 w-3" /> +254 700 123 456</span><span className="inline-flex items-center gap-2"><Mail className="h-3 w-3" /> hello@cctours.example</span></div></div></div>
+    <header className="absolute inset-x-0 top-0 z-40 border-b border-primary-foreground/20 text-primary-foreground lg:top-9"><div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8"><Link to="/" aria-label="C&C Tour Company home" className="flex items-center gap-3"><span className="font-display text-3xl">C&amp;C</span><span className="border-l border-primary-foreground/40 pl-3 text-[9px] font-semibold uppercase leading-4 tracking-[0.18em]">Tour<br/>Company</span></Link><nav aria-label="Main navigation" className="hidden items-center gap-8 lg:flex">{links.map((item) => <Link key={item.to} to={item.to} activeProps={{ className: "text-accent" }} className="text-xs font-semibold uppercase tracking-[0.16em] transition-colors hover:text-accent">{item.label}</Link>)}<Link to="/contact" className={buttonVariants({ variant: "light", size: "xl" })}>Plan a trip</Link></nav><Button aria-label={open ? "Close menu" : "Open menu"} variant="heroOutline" size="icon" className="lg:hidden" onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</Button></div></header>
+    {open && <div className="fixed inset-0 z-30 bg-foreground px-5 pb-8 pt-28 text-background lg:hidden"><nav className="flex flex-col border-t border-background/20">{links.map((item) => <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className="border-b border-background/20 py-5 font-display text-4xl">{item.label}</Link>)}</nav><p className="mt-10 text-sm text-background/60">Private journeys across East Africa</p></div>}
+  </>;
+}
+
+export function SiteFooter() {
+  return <footer className="bg-primary text-primary-foreground"><div className="mx-auto max-w-7xl px-5 py-16 sm:px-8"><div className="grid gap-12 border-b border-primary-foreground/20 pb-14 md:grid-cols-2 lg:grid-cols-4"><div><div className="font-display text-4xl">C&amp;C</div><p className="mt-4 max-w-xs text-sm leading-6 text-primary-foreground/70">Considered journeys, meaningful encounters and East Africa at its most extraordinary.</p></div><div><h2 className="eyebrow text-accent">Explore</h2><div className="mt-5 flex flex-col gap-3 text-sm">{links.map((item) => <Link key={item.to} to={item.to} className="w-fit hover:text-accent">{item.label}</Link>)}</div></div><div><h2 className="eyebrow text-accent">Contact</h2><address className="mt-5 space-y-3 text-sm not-italic text-primary-foreground/70"><p>Nairobi, Kenya</p><p>+254 700 123 456</p><p>hello@cctours.example</p></address></div><div><h2 className="eyebrow text-accent">Good to know</h2><p className="mt-5 text-sm leading-6 text-primary-foreground/70">All tours, prices and contact details shown are sample content ready for your updates.</p></div></div><div className="flex flex-col justify-between gap-3 pt-6 text-xs text-primary-foreground/60 sm:flex-row"><p>© 2026 C&amp;C Tour Company.</p><p>Travel thoughtfully. Tread lightly.</p></div></div></footer>;
+}

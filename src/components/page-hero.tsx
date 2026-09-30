@@ -1,0 +1,5 @@
+import type { ReactNode } from "react";
+
+export function PageHero({ eyebrow, title, intro, image, children }: { eyebrow: string; title: string; intro: string; image: string; children?: ReactNode }) {
+  return <section className="relative flex min-h-[62svh] items-end overflow-hidden"><img src={image} alt="" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-hero-overlay"/><div className="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-36 sm:px-8 lg:pb-20"><p className="eyebrow text-accent">{eyebrow}</p><h1 className="mt-4 max-w-4xl font-display text-5xl leading-[1.03] text-primary-foreground sm:text-7xl">{title}</h1><p className="mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/80">{intro}</p>{children}</div></section>;
+}
