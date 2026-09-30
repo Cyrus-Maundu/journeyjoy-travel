@@ -1,0 +1,13 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
+import { buttonVariants } from "@/components/ui/button";
+import { safariStyles } from "@/lib/travel-content";
+import heroImage from "@/assets/mara-lioness.jpg";
+
+export const Route = createFileRoute("/safari-styles")({
+  head: () => ({ meta: [{ title: "Safari Styles | C&C Tour Company" }, { name: "description", content: "Discover classic safaris, family adventures, bush and beach escapes, and conservation journeys." }, { property: "og:title", content: "Safari Styles | C&C Tour Company" }, { property: "og:description", content: "Find the East African journey that fits how you love to travel." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/safari-styles" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/safari-styles" }] }),
+  component: SafariStylesPage,
+});
+
+function SafariStylesPage() { return <main><PageHero eyebrow="Ways to travel" title="Your rhythm. Your Africa." intro="Begin with the feeling you want, then let us shape the places, camps and pace around you." image={heroImage}/><section className="section-space mx-auto max-w-7xl px-5 sm:px-8"><div className="grid gap-px border border-border bg-border md:grid-cols-2">{safariStyles.map((style) => <article key={style.name} className="group bg-background"><div className="aspect-[16/10] overflow-hidden"><img src={style.image} alt={style.name} loading="lazy" width={1600} height={1072} className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/></div><div className="p-7 sm:p-10"><h2 className="font-display text-4xl">{style.name}</h2><p className="mt-3 max-w-lg leading-7 text-muted-foreground">{style.detail}</p><Link to="/tours" className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Explore sample tours <ArrowRight className="h-4 w-4"/></Link></div></article>)}</div><div className="mt-16 bg-secondary px-7 py-10 text-center sm:px-12"><p className="eyebrow text-primary">Made to measure</p><h2 className="mt-4 font-display text-4xl">Combine any style into one seamless journey.</h2><Link to="/contact" className={buttonVariants({ size: "xl", className: "mt-7" })}>Start planning <ArrowRight/></Link></div></section></main>; }
