@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Binoculars, Compass, MapPin, Palmtree } from "lucide-react";
+import { ArrowRight, Binoculars, Compass, MapPin, Palmtree, Star } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import heroImage from "@/assets/cc-safari-hero.jpg";
 import amboseliImage from "@/assets/amboseli-elephants.jpg";
@@ -32,14 +32,14 @@ const featuredTours = [
 function Index() {
   return (
     <main>
-      <section className="relative flex min-h-[88svh] items-end overflow-hidden">
+      <section className="relative flex min-h-[92svh] items-center overflow-hidden">
         <img src={heroImage} alt="Travelers watching elephants on the Kenyan savannah" width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-36 sm:px-8 lg:pb-24">
-          <p className="eyebrow text-primary-foreground/80">Tailor-made journeys across East Africa</p>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[1.02] text-primary-foreground sm:text-7xl lg:text-8xl">Travel deeper.<br />Return different.</h1>
-          <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/85 sm:text-lg">Intimate safaris, Indian Ocean escapes and local stories—designed around the way you want to experience Africa.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+        <div className="relative mx-auto w-full max-w-7xl px-5 pb-28 pt-44 sm:px-8 lg:pt-52">
+          <p className="eyebrow flex items-center gap-5 text-accent"><span className="h-px w-12 bg-accent"/>Authentic East Africa</p>
+          <h1 className="mt-7 max-w-4xl font-display text-6xl leading-[0.9] text-primary-foreground sm:text-8xl lg:text-9xl">Pure. Wild.<br /><em className="font-normal text-accent">Unforgettable.</em></h1>
+          <p className="mt-8 max-w-xl text-base font-light leading-7 text-primary-foreground/85 sm:text-lg">Private safari journeys created with deep local knowledge, exceptional guides and the freedom to travel entirely at your own pace.</p>
+          <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/tours" className={buttonVariants({ variant: "light", size: "xl" })}>Explore our tours <ArrowRight /></Link>
             <Link to="/contact" className={buttonVariants({ variant: "heroOutline", size: "xl" })}>Plan my journey</Link>
           </div>
@@ -51,6 +51,8 @@ function Index() {
           {[['12+','Handpicked routes'],['24/7','On-trip support'],['100%','Private journeys'],['4.9/5','Guest rating']].map(([value,label]) => <div key={label} className="px-3 py-3 text-center"><strong className="block font-display text-3xl font-normal text-foreground">{value}</strong><span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">{label}</span></div>)}
         </div>
       </section>
+
+      <section className="border-b border-border bg-background"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-8 sm:px-8 md:flex-row md:items-center"><div><p className="eyebrow text-primary">Guest recommended</p><div className="mt-2 flex items-center gap-2"><span className="flex text-accent">{Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-4 w-4 fill-current" />)}</span><strong className="font-display text-2xl font-normal">4.9 out of 5</strong></div></div><div className="flex gap-6 text-xs font-semibold uppercase tracking-[0.14em]"><Link to="/reviews" className="hover:text-primary">Google Reviews</Link><Link to="/reviews" className="hover:text-primary">Tripadvisor</Link></div></div></section>
 
       <section className="section-space mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">

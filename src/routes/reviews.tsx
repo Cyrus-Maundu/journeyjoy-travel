@@ -1,0 +1,18 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Quote, Star } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
+import { buttonVariants } from "@/components/ui/button";
+import heroImage from "@/assets/rwanda-gorilla.jpg";
+
+const reviews = [
+  { quote: "Every day felt unhurried and completely ours. The guiding was thoughtful, warm and exceptionally knowledgeable.", name: "Amelia & James", journey: "Kenya safari · sample review" },
+  { quote: "From the first game drive to our final dhow sail, every transition felt effortless and beautifully considered.", name: "The Morgan family", journey: "Bush and beach · sample review" },
+  { quote: "We came home with extraordinary photographs, but the conversations and small moments are what stayed with us.", name: "Nadia R.", journey: "Rwanda and Kenya · sample review" },
+] as const;
+
+export const Route = createFileRoute("/reviews")({
+  head: () => ({ meta: [{ title: "Guest Reviews | C&C Tour Company" }, { name: "description", content: "Read editable sample guest stories and find C&C Tour Company review links for Google and Tripadvisor." }, { property: "og:title", content: "Guest Reviews | C&C Tour Company" }, { property: "og:description", content: "Guest stories from private East African journeys." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/reviews" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/reviews" }] }),
+  component: ReviewsPage,
+});
+
+function ReviewsPage() { return <main><PageHero eyebrow="Guest book" title="Journeys remembered, stories retold." intro="A sample collection showing how future guest feedback can be presented with warmth and credibility." image={heroImage}/><section className="section-space mx-auto max-w-7xl px-5 sm:px-8"><div className="grid gap-px border border-border bg-border lg:grid-cols-3">{reviews.map((review) => <article key={review.name} className="bg-background p-8 sm:p-10"><Quote className="h-8 w-8 text-accent" strokeWidth={1.25}/><div className="mt-7 flex text-accent">{Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-4 w-4 fill-current"/>)}</div><blockquote className="mt-6 font-display text-2xl leading-9">“{review.quote}”</blockquote><p className="mt-8 text-xs font-semibold uppercase tracking-[0.14em]">{review.name}</p><p className="mt-2 text-xs text-muted-foreground">{review.journey}</p></article>)}</div><div className="mt-16 grid gap-5 md:grid-cols-2"><a href="https://www.tripadvisor.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between border border-border p-7 hover:bg-secondary"><span><span className="eyebrow text-primary">Travel community</span><span className="mt-2 block font-display text-3xl">Tripadvisor</span></span><ArrowRight/></a><a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between border border-border p-7 hover:bg-secondary"><span><span className="eyebrow text-primary">Independent feedback</span><span className="mt-2 block font-display text-3xl">Google Reviews</span></span><ArrowRight/></a></div><p className="mt-5 text-xs text-muted-foreground">Reviews, ratings and platform links are placeholders. Replace them with verified C&amp;C profiles and genuine guest feedback before publishing.</p><div className="mt-14 text-center"><Link to="/contact" className={buttonVariants({ size: "xl" })}>Plan your own journey <ArrowRight/></Link></div></section></main>; }
