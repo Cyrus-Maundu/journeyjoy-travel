@@ -32,7 +32,7 @@ const featuredTours = [
 function Index() {
   return (
     <main>
-      <section className="relative flex min-h-screen items-center overflow-hidden">
+      <section className="relative flex min-h-[92svh] items-center overflow-hidden">
         <img src={heroImage} alt="Travelers watching elephants on the Kenyan savannah" width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-28 pt-44 sm:px-8 lg:pt-52">
