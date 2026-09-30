@@ -13,3 +13,4 @@
 
 - Keep public marketing content in separate TanStack routes and shared site chrome in `src/components/site-shell.tsx` so each page has unique metadata and consistent navigation.
 - Keep C&C visual values as semantic tokens in `src/styles.css`; page components consume those tokens rather than hardcoded colors.
+- Keep shared destination, safari-style, and gallery content in `src/lib/travel-content.ts` so related pages and photo collections stay consistent.
