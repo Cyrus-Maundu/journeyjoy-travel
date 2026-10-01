@@ -6,7 +6,7 @@ import { countryDestinations } from "@/lib/travel-content";
 import heroImage from "@/assets/samburu-giraffes.jpg";
 
 export const Route = createFileRoute("/destinations")({
-  head: () => ({ meta: [{ title: "East Africa Destinations | C&C Tour Company" }, { name: "description", content: "Explore sample journeys across Kenya, Tanzania, Rwanda and the Indian Ocean with C&C Tour Company." }, { property: "og:title", content: "East Africa Destinations | C&C Tour Company" }, { property: "og:description", content: "Four remarkable regions, thoughtfully connected in private East African journeys." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/destinations" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/destinations" }] }),
+  head: () => ({ meta: [{ title: "Africa Safari Destinations | C&C Tour Company" }, { name: "description", content: "Explore sample journeys across Kenya, Tanzania and Zambia with C&C Tour Company." }, { property: "og:title", content: "Africa Safari Destinations | C&C Tour Company" }, { property: "og:description", content: "Explore Kenya, Tanzania and Zambia through thoughtfully connected private journeys." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/destinations" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/destinations" }] }),
   component: DestinationsPage,
 });
 
