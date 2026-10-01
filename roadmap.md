@@ -10,10 +10,10 @@
 - [x] Add interconnected dropdown and mobile navigation
 - [x] Add grouped photo lightbox and review platform links
 - [x] Verify all expanded pages and interactions on desktop and mobile
-- [ ] Add the timed three-image homepage carousel
-- [ ] Add the floating WhatsApp booking shortcut
-- [ ] Rework Discover navigation and add Experiences and Blog
-- [ ] Add Kenya, Tanzania, and Zambia destination directories
-- [ ] Add detailed area pages with related photo galleries
-- [ ] Add a photographic background to the contact enquiry area
-- [ ] Verify the expanded destination experience on desktop and mobile
+- [x] Add the timed three-image homepage carousel
+- [x] Add the floating WhatsApp booking shortcut
+- [x] Rework Discover navigation and add Experiences and Blog
+- [x] Add Kenya, Tanzania, and Zambia destination directories
+- [x] Add detailed area pages with related photo galleries
+- [x] Add a photographic background to the contact enquiry area
+- [x] Verify the expanded destination experience on desktop and mobile
