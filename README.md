@@ -1,14 +1,20 @@
-# Welcome to your Lovable project
+# C&C Wanderlust
+
+I want create a tours and travel website called C&C tour company, reference in the attached website for designs and layouts and Colour, change the images and information to dummy tours information, i will update later
+https://www.serenityspa.co.ke/
+
+Make it as appealing as possible, also ensure SEO and security.
+Use Typescript, JS, React, tailwind etc and Do not use typescript
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/bd59027d-2e95-402a-b608-ac9bf4488a22).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +26,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
