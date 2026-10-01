@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 const menuGroups = [
-  { label: "Discover", items: [{ label: "Destinations", to: "/destinations" }, { label: "Safari styles", to: "/safari-styles" }, { label: "All tours", to: "/tours" }] },
-  { label: "Inspire", items: [{ label: "Photo gallery", to: "/gallery" }, { label: "Guest reviews", to: "/reviews" }] },
+  { label: "Discover", items: [{ label: "All destinations", to: "/destinations" }, { label: "Kenya", to: "/destinations/kenya" }, { label: "Tanzania", to: "/destinations/tanzania" }, { label: "Zambia", to: "/destinations/zambia" }, { label: "Experiences", to: "/experiences" }, { label: "Blog", to: "/blog" }] },
+  { label: "Journeys", items: [{ label: "All tours", to: "/tours" }, { label: "Safari styles", to: "/safari-styles" }, { label: "Photo gallery", to: "/gallery" }, { label: "Guest reviews", to: "/reviews" }] },
 ] as const;
 const directLinks = [{ label: "About", to: "/about" }, { label: "Contact", to: "/contact" }] as const;
 const footerLinks = [
@@ -15,6 +15,8 @@ const footerLinks = [
   { label: "All tours", to: "/tours" },
   { label: "Photo gallery", to: "/gallery" },
   { label: "Guest reviews", to: "/reviews" },
+  { label: "Experiences", to: "/experiences" },
+  { label: "Blog", to: "/blog" },
   ...directLinks,
 ] as const;
 

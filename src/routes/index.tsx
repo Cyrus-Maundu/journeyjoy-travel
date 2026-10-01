@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Binoculars, Compass, MapPin, Palmtree, Star } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import heroImage from "@/assets/cc-safari-hero.jpg";
+import { HomeHeroCarousel } from "@/components/home-hero-carousel";
 import amboseliImage from "@/assets/amboseli-elephants.jpg";
 import dianiImage from "@/assets/diani-dhow.jpg";
 import maraImage from "@/assets/mara-camp.jpg";
@@ -32,19 +32,7 @@ const featuredTours = [
 function Index() {
   return (
     <main>
-      <section className="relative flex min-h-[92svh] items-center overflow-hidden">
-        <img src={heroImage} alt="Travelers watching elephants on the Kenyan savannah" width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-28 pt-44 sm:px-8 lg:pt-52">
-          <p className="eyebrow flex items-center gap-5 text-accent"><span className="h-px w-12 bg-accent"/>Authentic East Africa</p>
-          <h1 className="mt-7 max-w-4xl font-display text-6xl leading-[0.9] text-primary-foreground sm:text-8xl lg:text-9xl">Pure. Wild.<br /><em className="font-normal text-accent">Unforgettable.</em></h1>
-          <p className="mt-8 max-w-xl text-base font-light leading-7 text-primary-foreground/85 sm:text-lg">Private safari journeys created with deep local knowledge, exceptional guides and the freedom to travel entirely at your own pace.</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/tours" className={buttonVariants({ variant: "light", size: "xl" })}>Explore our tours <ArrowRight /></Link>
-            <Link to="/contact" className={buttonVariants({ variant: "heroOutline", size: "xl" })}>Plan my journey</Link>
-          </div>
-        </div>
-      </section>
+      <HomeHeroCarousel />
 
       <section className="border-b border-border bg-secondary">
         <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border px-5 py-7 sm:grid-cols-4 sm:px-8">

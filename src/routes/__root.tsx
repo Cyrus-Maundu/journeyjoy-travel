@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
+import { WhatsAppBooking } from "../components/whatsapp-booking";
 
 function NotFoundComponent() {
   return (
@@ -125,6 +126,7 @@ function RootComponent() {
       <div className="min-h-screen overflow-x-hidden bg-background">
         <SiteHeader />
         <Outlet />
+        <WhatsAppBooking />
         <SiteFooter />
       </div>
     </QueryClientProvider>

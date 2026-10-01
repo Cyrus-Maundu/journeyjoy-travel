@@ -86,6 +86,7 @@
   --ring: oklch(0.45 0.075 151);
   --hero-overlay: linear-gradient(90deg, oklch(0.12 0.012 62 / 0.82), oklch(0.12 0.012 62 / 0.2) 72%), linear-gradient(0deg, oklch(0.1 0.01 62 / 0.46), transparent 48%);
   --gallery-overlay: linear-gradient(0deg, oklch(0.1 0.01 62 / 0.78), transparent 65%);
+  --contact-overlay: linear-gradient(90deg, oklch(0.1 0.012 62 / 0.9), oklch(0.1 0.012 62 / 0.48) 60%, oklch(0.1 0.012 62 / 0.7));
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -154,6 +155,7 @@
 
 @utility bg-hero-overlay { background: var(--hero-overlay); }
 @utility bg-gallery-overlay { background: var(--gallery-overlay); }
+@utility bg-contact-overlay { background: var(--contact-overlay); }
 @utility eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
 @utility section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; }
 @utility section-space { padding-top: clamp(5rem, 9vw, 8rem); padding-bottom: clamp(5rem, 9vw, 8rem); }
