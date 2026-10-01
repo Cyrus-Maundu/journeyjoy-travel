@@ -11,12 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as ExperiencesRouteImport } from './routes/experiences'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SafariStylesRouteImport } from './routes/safari-styles'
 import { Route as ToursRouteImport } from './routes/tours'
+import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
+import { Route as DestinationsCountryAreaRouteImport } from './routes/destinations.$country.$area'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,6 +32,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -36,6 +45,11 @@ const ContactRoute = ContactRouteImport.update({
 const DestinationsRoute = DestinationsRouteImport.update({
   id: '/destinations',
   path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperiencesRoute = ExperiencesRouteImport.update({
+  id: '/experiences',
+  path: '/experiences',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -58,76 +72,112 @@ const ToursRoute = ToursRouteImport.update({
   path: '/tours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
+  id: '/$country',
+  path: '/$country',
+  getParentRoute: () => DestinationsRoute,
+} as any)
+const DestinationsCountryAreaRoute = DestinationsCountryAreaRouteImport.update({
+  id: '/$area',
+  path: '/$area',
+  getParentRoute: () => DestinationsCountryRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
+  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
+  '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
+  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
+  '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
+  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
+  '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/blog'
     | '/contact'
     | '/destinations'
+    | '/experiences'
     | '/gallery'
     | '/reviews'
     | '/safari-styles'
     | '/tours'
+    | '/destinations/$country'
+    | '/destinations/$country/$area'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/blog'
     | '/contact'
     | '/destinations'
+    | '/experiences'
     | '/gallery'
     | '/reviews'
     | '/safari-styles'
     | '/tours'
+    | '/destinations/$country'
+    | '/destinations/$country/$area'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/blog'
     | '/contact'
     | '/destinations'
+    | '/experiences'
     | '/gallery'
     | '/reviews'
     | '/safari-styles'
     | '/tours'
+    | '/destinations/$country'
+    | '/destinations/$country/$area'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
-  DestinationsRoute: typeof DestinationsRoute
+  DestinationsRoute: typeof DestinationsRouteWithChildren
+  ExperiencesRoute: typeof ExperiencesRoute
   GalleryRoute: typeof GalleryRoute
   ReviewsRoute: typeof ReviewsRoute
   SafariStylesRoute: typeof SafariStylesRoute
@@ -150,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -162,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/destinations'
       fullPath: '/destinations'
       preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiences': {
+      id: '/experiences'
+      path: '/experiences'
+      fullPath: '/experiences'
+      preLoaderRoute: typeof ExperiencesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -192,14 +256,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/destinations/$country': {
+      id: '/destinations/$country'
+      path: '/$country'
+      fullPath: '/destinations/$country'
+      preLoaderRoute: typeof DestinationsCountryRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
+    '/destinations/$country/$area': {
+      id: '/destinations/$country/$area'
+      path: '/$area'
+      fullPath: '/destinations/$country/$area'
+      preLoaderRoute: typeof DestinationsCountryAreaRouteImport
+      parentRoute: typeof DestinationsCountryRoute
+    }
   }
 }
+
+interface DestinationsCountryRouteChildren {
+  DestinationsCountryAreaRoute: typeof DestinationsCountryAreaRoute
+}
+
+const DestinationsCountryRouteChildren: DestinationsCountryRouteChildren = {
+  DestinationsCountryAreaRoute: DestinationsCountryAreaRoute,
+}
+
+const DestinationsCountryRouteWithChildren =
+  DestinationsCountryRoute._addFileChildren(DestinationsCountryRouteChildren)
+
+interface DestinationsRouteChildren {
+  DestinationsCountryRoute: typeof DestinationsCountryRouteWithChildren
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsCountryRoute: DestinationsCountryRouteWithChildren,
+}
+
+const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
+  DestinationsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
-  DestinationsRoute: DestinationsRoute,
+  DestinationsRoute: DestinationsRouteWithChildren,
+  ExperiencesRoute: ExperiencesRoute,
   GalleryRoute: GalleryRoute,
   ReviewsRoute: ReviewsRoute,
   SafariStylesRoute: SafariStylesRoute,
