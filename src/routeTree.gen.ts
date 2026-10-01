@@ -20,6 +20,7 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SafariStylesRouteImport } from './routes/safari-styles'
 import { Route as ToursRouteImport } from './routes/tours'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
+import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as DestinationsCountryIndexRouteImport } from './routes/destinations.$country.index'
 import { Route as DestinationsCountryAreaRouteImport } from './routes/destinations.$country.$area'
 
@@ -78,16 +79,21 @@ const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DestinationsRoute,
 } as any)
+const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
+  id: '/$country',
+  path: '/$country',
+  getParentRoute: () => DestinationsRoute,
+} as any)
 const DestinationsCountryIndexRoute =
   DestinationsCountryIndexRouteImport.update({
-    id: '/$country/',
-    path: '/$country/',
-    getParentRoute: () => DestinationsRoute,
+    id: '/',
+    path: '/',
+    getParentRoute: () => DestinationsCountryRoute,
   } as any)
 const DestinationsCountryAreaRoute = DestinationsCountryAreaRouteImport.update({
-  id: '/$country/$area',
-  path: '/$country/$area',
-  getParentRoute: () => DestinationsRoute,
+  id: '/$area',
+  path: '/$area',
+  getParentRoute: () => DestinationsCountryRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
+  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
   '/destinations/': typeof DestinationsIndexRoute
   '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
   '/destinations/$country/': typeof DestinationsCountryIndexRoute
@@ -131,6 +138,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
+  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
   '/destinations/': typeof DestinationsIndexRoute
   '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
   '/destinations/$country/': typeof DestinationsCountryIndexRoute
@@ -148,6 +156,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/safari-styles'
     | '/tours'
+    | '/destinations/$country'
     | '/destinations/'
     | '/destinations/$country/$area'
     | '/destinations/$country/'
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/safari-styles'
     | '/tours'
+    | '/destinations/$country'
     | '/destinations/'
     | '/destinations/$country/$area'
     | '/destinations/$country/'
@@ -274,33 +284,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsIndexRouteImport
       parentRoute: typeof DestinationsRoute
     }
+    '/destinations/$country': {
+      id: '/destinations/$country'
+      path: '/$country'
+      fullPath: '/destinations/$country'
+      preLoaderRoute: typeof DestinationsCountryRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
     '/destinations/$country/': {
       id: '/destinations/$country/'
-      path: '/$country'
+      path: '/'
       fullPath: '/destinations/$country/'
       preLoaderRoute: typeof DestinationsCountryIndexRouteImport
-      parentRoute: typeof DestinationsRoute
+      parentRoute: typeof DestinationsCountryRoute
     }
     '/destinations/$country/$area': {
       id: '/destinations/$country/$area'
-      path: '/$country/$area'
+      path: '/$area'
       fullPath: '/destinations/$country/$area'
       preLoaderRoute: typeof DestinationsCountryAreaRouteImport
-      parentRoute: typeof DestinationsRoute
+      parentRoute: typeof DestinationsCountryRoute
     }
   }
 }
 
-interface DestinationsRouteChildren {
-  DestinationsIndexRoute: typeof DestinationsIndexRoute
+interface DestinationsCountryRouteChildren {
   DestinationsCountryAreaRoute: typeof DestinationsCountryAreaRoute
   DestinationsCountryIndexRoute: typeof DestinationsCountryIndexRoute
 }
 
-const DestinationsRouteChildren: DestinationsRouteChildren = {
-  DestinationsIndexRoute: DestinationsIndexRoute,
+const DestinationsCountryRouteChildren: DestinationsCountryRouteChildren = {
   DestinationsCountryAreaRoute: DestinationsCountryAreaRoute,
   DestinationsCountryIndexRoute: DestinationsCountryIndexRoute,
+}
+
+const DestinationsCountryRouteWithChildren =
+  DestinationsCountryRoute._addFileChildren(DestinationsCountryRouteChildren)
+
+interface DestinationsRouteChildren {
+  DestinationsCountryRoute: typeof DestinationsCountryRouteWithChildren
+  DestinationsIndexRoute: typeof DestinationsIndexRoute
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsCountryRoute: DestinationsCountryRouteWithChildren,
+  DestinationsIndexRoute: DestinationsIndexRoute,
 }
 
 const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
