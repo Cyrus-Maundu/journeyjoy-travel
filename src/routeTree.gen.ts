@@ -20,7 +20,7 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SafariStylesRouteImport } from './routes/safari-styles'
 import { Route as ToursRouteImport } from './routes/tours'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
-import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
+import { Route as DestinationsCountryIndexRouteImport } from './routes/destinations.$country.index'
 import { Route as DestinationsCountryAreaRouteImport } from './routes/destinations.$country.$area'
 
 const IndexRoute = IndexRouteImport.update({
@@ -78,15 +78,16 @@ const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DestinationsRoute,
 } as any)
-const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
-  id: '/$country',
-  path: '/$country',
-  getParentRoute: () => DestinationsRoute,
-} as any)
+const DestinationsCountryIndexRoute =
+  DestinationsCountryIndexRouteImport.update({
+    id: '/$country/',
+    path: '/$country/',
+    getParentRoute: () => DestinationsRoute,
+  } as any)
 const DestinationsCountryAreaRoute = DestinationsCountryAreaRouteImport.update({
-  id: '/$area',
-  path: '/$area',
-  getParentRoute: () => DestinationsCountryRoute,
+  id: '/$country/$area',
+  path: '/$country/$area',
+  getParentRoute: () => DestinationsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -100,9 +101,9 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
-  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
   '/destinations/': typeof DestinationsIndexRoute
   '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
+  '/destinations/$country/': typeof DestinationsCountryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -114,9 +115,9 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
-  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
   '/destinations': typeof DestinationsIndexRoute
   '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
+  '/destinations/$country': typeof DestinationsCountryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -130,9 +131,9 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/safari-styles': typeof SafariStylesRoute
   '/tours': typeof ToursRoute
-  '/destinations/$country': typeof DestinationsCountryRouteWithChildren
   '/destinations/': typeof DestinationsIndexRoute
   '/destinations/$country/$area': typeof DestinationsCountryAreaRoute
+  '/destinations/$country/': typeof DestinationsCountryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -147,9 +148,9 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/safari-styles'
     | '/tours'
-    | '/destinations/$country'
     | '/destinations/'
     | '/destinations/$country/$area'
+    | '/destinations/$country/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -161,9 +162,9 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/safari-styles'
     | '/tours'
-    | '/destinations/$country'
     | '/destinations'
     | '/destinations/$country/$area'
+    | '/destinations/$country'
   id:
     | '__root__'
     | '/'
@@ -176,9 +177,9 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/safari-styles'
     | '/tours'
-    | '/destinations/$country'
     | '/destinations/'
     | '/destinations/$country/$area'
+    | '/destinations/$country/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -273,42 +274,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsIndexRouteImport
       parentRoute: typeof DestinationsRoute
     }
-    '/destinations/$country': {
-      id: '/destinations/$country'
+    '/destinations/$country/': {
+      id: '/destinations/$country/'
       path: '/$country'
-      fullPath: '/destinations/$country'
-      preLoaderRoute: typeof DestinationsCountryRouteImport
+      fullPath: '/destinations/$country/'
+      preLoaderRoute: typeof DestinationsCountryIndexRouteImport
       parentRoute: typeof DestinationsRoute
     }
     '/destinations/$country/$area': {
       id: '/destinations/$country/$area'
-      path: '/$area'
+      path: '/$country/$area'
       fullPath: '/destinations/$country/$area'
       preLoaderRoute: typeof DestinationsCountryAreaRouteImport
-      parentRoute: typeof DestinationsCountryRoute
+      parentRoute: typeof DestinationsRoute
     }
   }
 }
 
-interface DestinationsCountryRouteChildren {
-  DestinationsCountryAreaRoute: typeof DestinationsCountryAreaRoute
-}
-
-const DestinationsCountryRouteChildren: DestinationsCountryRouteChildren = {
-  DestinationsCountryAreaRoute: DestinationsCountryAreaRoute,
-}
-
-const DestinationsCountryRouteWithChildren =
-  DestinationsCountryRoute._addFileChildren(DestinationsCountryRouteChildren)
-
 interface DestinationsRouteChildren {
-  DestinationsCountryRoute: typeof DestinationsCountryRouteWithChildren
   DestinationsIndexRoute: typeof DestinationsIndexRoute
+  DestinationsCountryAreaRoute: typeof DestinationsCountryAreaRoute
+  DestinationsCountryIndexRoute: typeof DestinationsCountryIndexRoute
 }
 
 const DestinationsRouteChildren: DestinationsRouteChildren = {
-  DestinationsCountryRoute: DestinationsCountryRouteWithChildren,
   DestinationsIndexRoute: DestinationsIndexRoute,
+  DestinationsCountryAreaRoute: DestinationsCountryAreaRoute,
+  DestinationsCountryIndexRoute: DestinationsCountryIndexRoute,
 }
 
 const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(

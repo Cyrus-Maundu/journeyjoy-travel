@@ -4,7 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { buttonVariants } from "@/components/ui/button";
 import { getCountry } from "@/lib/travel-content";
 
-export const Route = createFileRoute("/destinations/$country")({
+export const Route = createFileRoute("/destinations/$country/")({
   loader: ({ params }) => {
     const country = getCountry(params.country);
     if (!country) throw notFound();
