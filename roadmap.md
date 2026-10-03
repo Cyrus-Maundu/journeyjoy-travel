@@ -17,3 +17,8 @@
 - [x] Add detailed area pages with related photo galleries
 - [x] Add a photographic background to the contact enquiry area
 - [x] Verify the expanded destination experience on desktop and mobile
+- [ ] Change the floating WhatsApp booking button to green
+- [ ] Make destination photo rows horizontally scrollable
+- [ ] Add exact travel dates and tour duration to the contact form
+- [ ] Send each booking enquiry to the provided Gmail inbox
+- [ ] Verify the updated contact and destination experiences
