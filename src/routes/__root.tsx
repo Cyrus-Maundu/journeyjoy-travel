@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { WhatsAppBooking } from "../components/whatsapp-booking";
+import { InspectGuard } from "../components/inspect-guard";
 
 function NotFoundComponent() {
   return (
@@ -127,6 +128,7 @@ function RootComponent() {
         <SiteHeader />
         <Outlet />
         <WhatsAppBooking />
+        <InspectGuard />
         <SiteFooter />
       </div>
     </QueryClientProvider>
