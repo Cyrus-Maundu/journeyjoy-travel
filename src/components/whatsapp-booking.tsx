@@ -2,14 +2,17 @@ import { MessageCircle, Send, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 const WHATSAPP_NUMBER = "254701165121";
 const quickTopics = ["Kenya safari", "Tanzania safari", "Zambia journey", "Beach holiday", "Custom trip"];
+const budgetRanges = ["Under $2,500", "$2,500–$5,000", "$5,000–$10,000", "$10,000–$20,000", "$20,000+"];
 
 export function WhatsAppBooking() {
   const [open, setOpen] = useState(false);
   const [topic, setTopic] = useState(quickTopics[0]);
+  const [budget, setBudget] = useState("");
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,6 +24,7 @@ export function WhatsAppBooking() {
       `Interested in: ${topic}`,
       clean("date", 20) && `Travel date: ${clean("date", 20)}`,
       `Travelers: ${clean("travelers", 3) || "1"}`,
+      `Budget (USD): ${budget}`,
       clean("message", 500) && `Message: ${clean("message", 500)}`,
     ].filter(Boolean);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
@@ -50,6 +54,10 @@ export function WhatsAppBooking() {
               <Input name="date" type="date" aria-label="Travel date" />
               <Input name="travelers" type="number" min={1} max={50} defaultValue={2} aria-label="Travelers" />
             </div>
+            <Select name="budget" required value={budget} onValueChange={setBudget}>
+              <SelectTrigger aria-label="Your budget in US dollars"><SelectValue placeholder="Your budget (USD)" /></SelectTrigger>
+              <SelectContent>{budgetRanges.map((range) => <SelectItem key={range} value={range}>{range}</SelectItem>)}</SelectContent>
+            </Select>
             <Textarea name="message" maxLength={500} placeholder="Anything else? (optional)" className="min-h-20" />
             <Button type="submit" className="w-full bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp-hover"><Send className="size-4" />Send on WhatsApp</Button>
           </form>
