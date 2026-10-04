@@ -22,3 +22,5 @@
 - [x] Add exact travel dates and tour duration to the contact form
 - [ ] Send each booking enquiry to the provided Gmail inbox
 - [x] Verify the updated contact and destination experiences
+- [x] Add USD budget ranges to the contact and WhatsApp booking forms
+- [x] Replace crowded mobile navigation with back-navigable submenus
