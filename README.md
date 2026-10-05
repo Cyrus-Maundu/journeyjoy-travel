@@ -26,7 +26,7 @@ Built with **React 19 + TypeScript** on **TanStack Start v1** (file-based routin
 ## Key features
 
 - **Interconnected navigation** — desktop dropdowns and a mobile menu with back-navigable submenus (Discover → Destinations, Experiences, Blog; Journeys → Tours, Safari Styles, Gallery, Reviews).
-- **WhatsApp booking** — floating green button with a prefilled booking form (topic, name, travel date, travelers, USD budget, message) that opens WhatsApp at **+254 713 587 804**.
+- **WhatsApp booking** — floating green button with a prefilled booking form (topic, name, travel date, travelers, USD budget, message) that opens WhatsApp at **+254 704 683 152**.
 - **Photo galleries** — horizontally scrollable destination photo rows plus a full-screen lightbox where clicking one photo opens all related photos in the same group.
 - **SEO** — per-page unique titles, descriptions, Open Graph and Twitter metadata, canonical URLs, and TravelAgency JSON-LD.
 - **Design system** — all colors, gradients and shadows are semantic tokens in `src/styles.css` (Savannah luxury heritage palette: Cormorant Garamond display + Montserrat body); components never hardcode colors.
