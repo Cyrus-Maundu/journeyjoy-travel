@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-const WHATSAPP_NUMBER = "254704683152";
+const WHATSAPP_NUMBER = "254701165121";
 const quickTopics = ["Kenya safari", "Tanzania safari", "Zambia journey", "Beach holiday", "Custom trip"];
 const budgetRanges = ["Under $2,500", "$2,500–$5,000", "$5,000–$10,000", "$10,000–$20,000", "$20,000+"];
 
