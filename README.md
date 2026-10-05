@@ -69,7 +69,7 @@ npm run build     # production build
 - [x] Right-click / inspection protection on the published site
 - [ ] **Email delivery** — enquiries currently confirm on-screen only. Sending bookings to **devsben345@gmail.com** requires a sending domain (e.g. `bookings@yourdomain.com`); Gmail cannot send on behalf of the site directly.
 - [ ] **Admin booking dashboard** — deferred by design; will be added later.
-- [ ] Replace remaining sample content (phone `+254 700 123 456`, `hello@cctours.example`, review links, tour prices) with real business details.
+- [ ] Replace remaining sample content (`hello@cctours.example`, review links, tour prices) with real business details.
 
 ## Notes
 
